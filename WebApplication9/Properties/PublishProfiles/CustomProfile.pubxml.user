@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZ4lZ/JskZ0OSbAeAJ9wT9QAAAAACAAAAAAAQZgAAAAEAACAAAAAlaHp8O5z9XkfRv+jhOhjjFl/AgOdZvBOS5mq+x+6hLAAAAAAOgAAAAAIAACAAAAB8EdHx8CuFZK+1uB83CHuvHSRKFwxQO0/Hl8bCqBzPLRAAAADNXHj7tYj46TLKGH63MvRlQAAAAABfiMrer3pTPa4gMSDwljhBlhKhJD/gp55KB5sYuzMxOoTIB3dVMJ/lJZXcO6H/H1y3c/iNU25/qDDREs4/f/8=</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="APP">
+      <Value>Server=app.fit.ba;Database=p1745db;Trusted_Connection=False;MultipleActiveResultSets=true;User ID=p1745db;Password=EnidaObradovic123</Value>
+    </DestinationConnectionStrings>
+    <DestinationConnectionStrings Include="Lokalni">
+      <Value>Server=localhost;Database=p1745db;Trusted_Connection=True;MultipleActiveResultSets=true;</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

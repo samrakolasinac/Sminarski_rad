@@ -1,0 +1,53 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApplication9.Areas.Klijent.ViewModels.RezervacijeDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+
+<!DOCTYPE html>
+<head>
+    <style>
+    </style>
+</head>
+<header class="panel-heading"></header>
+<div style="background-image:url(https://t-ec.bstatic.com/images/hotel/max1024x768/780/78084129.jpg)">
+   
+    <div class="form-style-6" style="margin-left:0%;">
+        <form asp-action="Snimi" >
+            <input type="hidden" asp-for="GostID"  />
+            <fieldset>
+
+                <h1><i class=" fa fa-calendar"></i> Nova rezervacija</h1>
+                <label>Gost:</label>
+                <input class="form-control" placeholder="Gost" value="@Model.Gost" readonly>
+                <input type="hidden" name="GostID" value="@Model.GostID" />
+                <span asp-validation-for="Gost" class="text-danger"></span>
+                <label>Datum rezervacije:</label>
+                <input class="form-control" placeholder="DatumRezervacije" value="@Model.DatumRezervacije.ToShortDateString()" readonly>
+                <label>Odaberi sobu:</label>
+                <select type="text" name="Id" class="form-control">
+                    @foreach (var x in Model.sobe)
+                    {
+                        <option value="@x.Value">@x.Text</option>
+                    }
+                </select>
+                <label>Dozvoljeno pusenje? </label>
+                @Html.CheckBoxFor(Model => Model.DozvoljenoPusenje)<br />
+                <br />
+                <br />
+
+                <div id="nekiID"></div>
+            </fieldset>
+            <br />
+            <br />
+            <br />
+            <br />
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Sacuvaj</button>
+
+            <a asp-action="Index" class="btn btn-primary" style="background-color:lightgray;color:black"><i class="fa fa-times"></i> Odustani</a>
+        </form>
+    </div>
+    </div>
+

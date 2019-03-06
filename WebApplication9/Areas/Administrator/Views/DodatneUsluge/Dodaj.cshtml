@@ -1,0 +1,50 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApplication9.Areas.Administrator.ViewModels.DodatneUslugeDodajVM
+
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+
+}
+<!DOCTYPE html>
+
+
+<div class="form-style-6">
+    <form asp-action="Snimi">
+        <input type="hidden" asp-for="DodatneUsluge.Id" />
+        <fieldset>
+
+            <h1><i class=" fa fa-spa"></i> Nova usluga</h1>
+
+
+
+            <label>Naziv:</label>
+            <input type="text" asp-for="DodatneUsluge.Naziv" placeholder="Naziv">
+            <span asp-validation-for="DodatneUsluge.Naziv" class=" text-danger"></span>
+            <label>Opis:</label>
+            <textarea asp-for="DodatneUsluge.Opis" placeholder="Opis"></textarea>
+            <span asp-validation-for="DodatneUsluge.Opis" class=" text-danger"></span>
+            <label>Cijena:</label>
+            <input type="text" asp-for="DodatneUsluge.Cijena" placeholder="Cijena">
+            <span asp-validation-for="DodatneUsluge.Cijena" class=" text-danger"></span>
+
+
+        </fieldset>
+        <br />
+
+
+        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Sacuvaj</button>
+        <a asp-action="Index" class="btn btn-primary" style="background-color:lightgray;color:black"><i class="fa fa-times"></i> Odustani</a>
+
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+

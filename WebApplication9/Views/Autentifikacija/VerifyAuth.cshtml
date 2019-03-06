@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "VerifyAuth";
+}
+
+<link href="~/css/style1.css" rel="stylesheet">
+<style>
+    .field-validation-error {
+        color: darkred;
+    }
+</style>
+<div class="body"></div>
+<div class="grad"></div>
+<div class="header">
+    <div>Hotel "Holiday"</div>
+</div>
+<br>
+
+<h2>VerifyAuth</h2>
+
+<form class="login" asp-action="VerifyAuth" method="post">
+    <div>@ViewBag.Message</div>
+    <div>
+        <img src="@ViewBag.BarcodeImageUrl" />
+    </div>
+    <div>
+        Manual Setup Code: @ViewBag.SetupCode
+    </div>
+
+    <input type="text" name="passcode" />
+
+    <input type="submit" class="btn btn-success" />
+</form>

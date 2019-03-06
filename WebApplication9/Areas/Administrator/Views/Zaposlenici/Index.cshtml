@@ -1,0 +1,92 @@
+﻿@model WebApplication9.Areas.Administrator.ViewModels.ZaposleniciIndexVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Podaci o zaposlenicima
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <form>
+
+                <select id="myInput" onchange="myFunction()" style="width:30%;">
+                    <option value="">Odaberi tip uposlenika:</option>
+
+                    <option value="Administrator">Administrator</option>
+                    <option value="Recepcionar">Recepcionar</option>
+
+                </select>
+
+            </form>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Ime</th>
+                        <th>Prezime</th>
+                        <th>Broj telefona</th>
+                        <th>JMBG</th>
+                        <th>Tip uposlenika</th>
+                       
+
+                        <th>Akcija</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.rows)
+            {
+                <tr>
+                    <td>@x.Ime</td>
+                    <td>@x.Prezime</td>
+                    <td>@x.BrojTelefon</td>
+                    <td>@x.JMBG</td>
+                    <td>@x.TipUposlenika</td>
+                   
+            <td>
+                <a href="/Administrator/Zaposlenici/Detalji?zaposlenikID=@x.ZaposlenikID" class=" btn btn-outline-primary" style="background-color: #e7e7e7; color: black;">
+                    <i class="fa fa-info"></i>
+                    Detalji
+                </a>
+                <a href="/Administrator/Zaposlenici/Obrisi?zaposlenikID=@x.ZaposlenikID" class="btn btn-outline-primary" style="background-color: #e7e7e7; color: black;">
+                    <i class="fa" style="color:black">&#xf00d;</i> Obrisi
+                </a>
+
+            </td>
+
+        </tr>
+}
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <a href="/Administrator/Zaposlenici/Dodaj" class=" btn btn-primary" style="background-color: #e7e7e7; color: black;">
+            <i class="fa fa-plus"></i> Dodaj
+        </a>
+
+    </div>
+</div>
+<script>
+    function myFunction() {
+        var input, table, tr, td, txtValue;
+        input = document.getElementById("myInput").value;
+        table = document.getElementById("dataTable");
+        tr = table.getElementsByTagName("tr");
+        for (var i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[4];
+            if (td != null) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.indexOf(input) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script>

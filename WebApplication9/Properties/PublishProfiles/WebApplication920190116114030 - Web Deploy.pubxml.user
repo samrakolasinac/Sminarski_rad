@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZ4lZ/JskZ0OSbAeAJ9wT9QAAAAACAAAAAAAQZgAAAAEAACAAAACBDrOp7kpbE/4QXf+GxvvBYGYjQOIS4Bvt0+LvB/QnAQAAAAAOgAAAAAIAACAAAADQso/0JEgm8R1TOUbrxaVmwJxbj2nbNzQWTvZ1u2dBX4AAAABP+Om4bbo9havkT+C9tGnVbRqIwem2eDsi3GV0WtTYd2XAYGUY5f38C0X942alUvbupEvptcrpqg/BkDiViC0FIHXW3PVJZRnZr7uh8gB0j/9vcBqtibp77ObyYZZsGI9pb6g49cAmuTB3fXqwgw+JDhcm6eOSlE7cNQ5Dmna2FEAAAACNwXP4mw+Mi148PWzwPsDS6d1GkFh9SD0D6CAO+6tv/al1zkCGS9rqog4AmcHYeTrfwf5gdomiCVEDlEHQSZAh</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="APP">
+      <Value>Data Source=tcp:webapplication920190116114030dbserver.database.windows.net,1433;Initial Catalog=WebApplication920190116114030_db;User Id=Mostar@webapplication920190116114030dbserver;Password=EnidaObradovic123</Value>
+    </DestinationConnectionStrings>
+    <DestinationConnectionStrings Include="Lokalni">
+      <Value>Data Source=tcp:webapplication920190116114030dbserver.database.windows.net,1433;Initial Catalog=WebApplication920190116114030_db;User Id=Mostar@webapplication920190116114030dbserver;Password=EnidaObradovic123</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,58 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApplication9.Areas.Klijent.ViewModels.RezervacijaRezervisiJeloVM
+@{
+    ViewData["Title"] = "RezervisiUsluge";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+<head>
+    <style>
+    </style>
+</head>
+
+<div style="background-image:url(https://t-ec.bstatic.com/images/hotel/max1024x768/780/78084129.jpg)">
+
+    <div class="form-style-6" style="margin-left:0%;">
+        <form asp-action="Snimi4">
+            <input type="hidden" asp-for="RezervacijaID" />
+            <fieldset>
+
+                <h1><i class=" fa fa-calendar"></i> Rezervisi jelo</h1>
+                <label>Dodatne usluge:</label>
+                <select type="text" name="JeloID" class="form-control">
+                    @foreach (var x in Model.jelo)
+                    {
+                        <option value="@x.Value">@x.Text</option>
+                    }
+                </select>
+                <label>Kolicina</label>
+                <span asp-validation-for="Kolicina" class="text-danger"></span>
+                <input asp-for="Kolicina" value="@Model.Kolicina" class="text-danger" />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div id="nekiID"></div>
+            </fieldset>
+            <br />
+            <br />
+            <br />
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Sacuvaj</button>
+
+           <a asp-action="Index" class="btn btn-primary" style="background-color:lightgray;color:black"><i class="fa fa-times"></i> Odustani</a>
+        </form>
+    </div>
+</div>
+
+
+
+
+

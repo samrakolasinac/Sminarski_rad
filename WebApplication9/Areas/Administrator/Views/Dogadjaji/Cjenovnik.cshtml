@@ -1,0 +1,51 @@
+﻿
+@model WebApplication9.Areas.Administrator.ViewModels.Cjenovnik
+@{
+    ViewData["Title"] = "Cjenovnik";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Cjenovnik  dogadjaja
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Cijena</th>
+
+                        <th>Akcije</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.rows)
+                    {
+                        <tr>
+                            <td>@x.naziv</td>
+                            <td>@x.cijena</td>
+
+                            <td>
+                                <a href="/Administrator/Dogadjaji/Uredi?ID=@x.ID" class="btn btn-outline-primary" style="background-color: #e7e7e7; color: black;">
+                                    <i class="fa fa-edit"></i>Uredi
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+<a href="/Administrator/Dogadjaji/Index" class="btn btn-primary" style="margin-left:40%; background-color:gray"><i class="fa fa-backward"></i> Nazad na prikaz</a>
+
+
+

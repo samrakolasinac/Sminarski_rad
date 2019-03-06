@@ -1,0 +1,77 @@
+﻿@model WebApplication9.ViewModels.AutentifikacijaRegistracijaVM
+@{
+    ViewData["Title"] = "Registracija";
+}
+<link href="~/css/style1.css" rel="stylesheet">
+<style>
+    .field-validation-error {
+        color: darkred;
+    }
+
+    .login {
+        position: absolute;
+        top: calc(25% - 75px);
+        left: calc(50% - 50px);
+        height: 150px;
+        width: 350px;
+        padding: 10px;
+        z-index: 2;
+    }
+</style>
+<div class="body"></div>
+<div class="grad"></div>
+<div class="header">
+    <div>Hotel "Holiday"</div>
+</div>
+<br>
+
+<h4>Registracija</h4>
+
+<form class="login" asp-action="Registracija" method="post">
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+    }
+    <label asp-for="Ime">Ime</label><br />
+    <input asp-for="Ime" placeholder="Ime" /><br />
+    <br />
+    @Html.ValidationMessageFor(Model => Model.Ime)
+
+
+    <label asp-for="Prezime">Prezime</label><br />
+    <input asp-for="Prezime" placeholder="Prezime" />
+    <br />
+    @Html.ValidationMessageFor(Model => Model.Prezime)<br />
+
+    <label asp-for="Spol">Spol</label><br />
+    <input asp-for="Spol" placeholder="Spol" /><br />
+    @Html.ValidationMessageFor(Model => Model.Spol)<br />
+
+    <label asp-for="BrojTelefona">Broj telefona</label><br />
+    <input asp-for="BrojTelefona" placeholder="Broj telefona" /><br />
+    @Html.ValidationMessageFor(Model => Model.BrojTelefona)<br />
+
+    <label asp-for="Email">Email</label><br />
+    <input asp-for="Email" placeholder="Email" /><br />
+    @Html.ValidationMessageFor(Model => Model.Email)<br />
+
+
+    <label asp-for="KorisnickoIme">Korisnicko ime</label><br />
+    <input asp-for="KorisnickoIme" placeholder="Korisnicko ime" /><br />
+    @Html.ValidationMessageFor(Model => Model.KorisnickoIme)<br />
+
+    <label asp-for="Password">Lozinka</label><br />
+    <input asp-for="Password" placeholder="Password" /><br />
+    @Html.ValidationMessageFor(Model => Model.Password)<br />
+
+    <label asp-for="GradID">Grad</label>
+    
+        <select asp-for="GradID" asp-items="@Model.Gradovi">
+            <option>Odaberi grad</option>
+
+        </select>
+    
+    <br />
+    <button type="submit" class="button">Registruj se </button>
+
+</form>

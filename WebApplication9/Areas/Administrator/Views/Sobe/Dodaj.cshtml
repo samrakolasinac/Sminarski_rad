@@ -1,0 +1,61 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApplication9.Areas.Administrator.ViewModels.SobeDodajVM
+
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+
+}
+<!DOCTYPE html>
+
+
+<div class="form-style-6">
+    <form asp-action="Snimi">
+        <input type="hidden" asp-for="soba.Id" />
+        <fieldset>
+         
+        <h1><i class=" fa fa-bed"></i> Nova soba</h1>
+
+
+            <label>Naziv:</label>
+            <input type="text" asp-for="soba.Naziv" placeholder="Naziv">
+            <span asp-validation-for="soba.Naziv" class="text-danger"></span>
+            <label>Sprat:</label>
+            <input type="text" asp-for="soba.Sprat" placeholder="Sprat">
+            <span asp-validation-for="soba.Sprat" class="text-danger"></span>
+            <label>Cijena:</label>
+            <input type="text" asp-for="soba.Cijena" placeholder="Cijena">
+            <span asp-validation-for="soba.Cijena" class="text-danger"></span>
+            <label>Dostupna: </label>
+            @Html.CheckBoxFor(Model => Model.soba.Dostupna)<br />
+            <label for="job">Tip sobe:</label>
+            <select id="job" asp-for="soba.TipSobeID" asp-items="@Model.tipSoba"></select>
+            <span asp-validation-for="soba.TipSobeID" class="text-danger"></span>
+            <a id="btnDodajTip" class="btn btn-default">...</a>
+            <div id="nekiID"></div>
+        </fieldset>
+        <br />
+       
+
+        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Sacuvaj</button>
+        <a asp-action="Index" class="btn btn-primary" style="background-color:lightgray;color:black"><i class="fa fa-times"></i> Odustani</a>
+
+    </form>
+    
+</div>
+
+
+
+
+<script>
+    $("#btnDodajTip").click(function (event) {
+
+        $.get("/Administrator/Sobe/DodajTipSobe?sobaID=@Model.soba.Id",
+            function (rezultat, status) {
+                $("#nekiID").html(rezultat);
+
+            });
+    });
+
+</script>
+

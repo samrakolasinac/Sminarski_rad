@@ -1,0 +1,70 @@
+﻿@model WebApplication9.Areas.Administrator.ViewModels.DodatneUslugeIndexVM
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Dodatne usluge
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" @*width="100%" *@ cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="50%">Naziv</th>
+
+                        <th>Akcija</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.rows)
+                {
+                    <tr>
+                        <td>@x.Naziv</td>
+
+
+                        <td>
+
+
+                            <a href="/Administrator/DodatneUsluge/Detalji?uslugaID=@x.UslugaID" class="btn btn-outline-primary"
+                               style="background-color: #e7e7e7; color: black;">
+                                <i class="fa fa-info"></i>
+                                Detaljan opis
+                            </a> <space></space><space></space>
+
+
+
+                            <a href="/Administrator/DodatneUsluge/Uredi?uslugaID=@x.UslugaID" class="btn btn-outline-primary" style="background-color: #e7e7e7; color: black;">
+                                <i class="fa fa-edit"></i>Uredi
+                            </a>
+                            <a href="/Administrator/DodatneUsluge/Obrisi?uslugaID=@x.UslugaID" class="btn btn-outline-primary" style="background-color: #e7e7e7; color: black;">
+                                <i class="fa" style="color:black">&#xf00d;</i>
+                                Obrisi
+                            </a>
+
+                        </td>
+
+                    </tr>
+            }
+                </tbody>
+
+            </table>
+
+        </div>
+        <a href="/Administrator/DodatneUsluge/Dodaj" class=" btn btn-primary" style="background-color: #e7e7e7; color: black;"><i class="fa fa-plus"></i> Dodaj</a>
+        <a href="/Administrator/DodatneUsluge/Cjenovnik" class=" btn btn-primary" style="background-color: #e7e7e7; color: black;"><i class="fa fa-angle-double-right"></i> Idi na cjenovnik</a>
+    </div>
+    
+
+
+
+
+</div>

@@ -1,0 +1,82 @@
+﻿@model WebApplication9.Areas.Administrator.ViewModels.ZaposleniciDetaljiVM
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Detalji";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+<hr>
+<div>
+    <h2 style="display:inline-block">Detalji zaposlenika @Model.ImePrezime </h2> <a href="/Administrator/Zaposlenici/Index" class="btn btn-primary" style="float:right"><i class="fa fa-backward"></i></a>
+</div>
+<hr />
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table">Osnovni podaci</i>
+
+    </div>
+    <div class="card-body">
+        <input type="hidden" value="@Model.Zaposlenikid" />
+        <div class="form-group">
+            <div class="form-row">
+                <label>Datum rodjenja</label>
+                <input type="text" readonly class="form-control" value="@Model.DatumRodjenja" />
+            </div>
+            <div class="form-row">
+                <label>Datum zaposlenja</label>
+                <input type="text" readonly class="form-control" value="@Model.DatumZaposlenja" />
+            </div>
+            <div class="form-row">
+                <label>Tip zaposlenika</label>
+                <input type="text" readonly class="form-control" value="@Model.TipZaposlenika" />
+            </div>
+            <div class="form-row">
+                <label>Broj tekuceg racuna</label>
+                <input type="text" class="form-control" asp-for="@Model.BrojTekucegRacuna" />
+            </div>
+            <div class="form-row">
+                <label>Grad</label>
+                <input type="text" readonly class="form-control" value="@Model.Grad" />
+            </div>
+            <div class="form-row">
+                <label>Email</label>
+                <input type="text" readonly class="form-control" value="@Model.Email" />
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table">Korisnicki podaci</i>
+
+    </div>
+    <div class="card-body">
+        <input type="hidden" value="@Model.Zaposlenikid" />
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col-md-6">
+
+                    <label>Korisniko ime</label>
+                    <input type="text" readonly class="form-control" value="@Model.KorisnickoIme" />
+
+                </div>
+                <div class="col-md-6">
+                    <label>Lozinka</label>
+                    <input type="text" readonly class="form-control" value="@Model.Lozinka" />
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+<a href="/Administrator/Zaposlenici/Uredi?zaposlenikID=@Model.Zaposlenikid" class="btn btn-outline-primary" style="float:right;background-color: #e7e7e7; color: black;"><i class="fa fa-edit"></i> Uredi</a>

@@ -1,0 +1,53 @@
+﻿
+@model WebApplication9.Areas.Administrator.ViewModels.LokacijePrikaziGradoveVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Gradovi
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Akcije</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.gradovi)
+            {
+                <tr>
+                    <td>@x.Naziv</td>
+
+
+                    <td>
+
+                        <a href="/Administrator/Lokacije/UrediGrad?gradID=@x.Id" class="btn btn-outline-primary" style="background-color: #e7e7e7; color: black;">
+                            <i class="fa fa-edit"></i>Uredi
+                        </a>
+                        <a href="/Administrator/Lokacije/ObrisiGrad?gradID=@x.Id" class="btn btn-outline-primary" style="background-color: #e7e7e7; color: black;">
+                            <i class="fa" style="color:black">&#xf00d;</i>
+                            Obrisi
+                        </a>
+
+                    </td>
+
+                </tr>
+    }
+                </tbody>
+
+            </table>
+            <a href="/Administrator/Lokacije/Index" class="btn btn-outline-primary" style=" background-color: #e7e7e7; color: black;"><i class="fa fa-backward"></i> Nazad</a>
+            <a href="/Administrator/Lokacije/DodajGrad?drzavaID=@Model.DrzavaID" class=" btn btn-primary" style="background-color: #e7e7e7; color: black;"><i class="fa fa-plus"></i> Dodaj</a>
+        </div>
+    </div>
+</div>
+

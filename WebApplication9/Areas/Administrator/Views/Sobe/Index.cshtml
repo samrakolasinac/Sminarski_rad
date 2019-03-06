@@ -1,0 +1,126 @@
+﻿@model WebApplication9.Areas.Administrator.ViewModels.SobaIndexVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Sobe
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <form>
+                <label>Filtriraj po spratu: </label>
+                <select id="myInput" onchange="myFunction()" style="width:20%;">
+                    <option value="">Odaberi  sprat:</option>
+
+                    <option value="1">1.sprat</option>
+                    <option value="2">2.sprat</option>
+                    <option value="3">3.sprat</option>
+                    <option value="4">4.sprat</option>
+                    <option value="5">5.sprat</option>
+                    <option value="6">6.sprat</option>
+
+                </select>
+
+            </form>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Broj sprata</th>
+                        <th>Tip sobe</th>
+                        <th>Cijena(KM)</th>
+                        <th>Status sobe</th>
+                        <th>Akcije</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.sobe)
+                {
+                    <tr>
+                        <td>@x.Naziv</td>
+                        <td>@x.BrojSprata</td>
+                        <td>@x.tipSObe</td>
+                        <td>@x.cijena</td>
+                        <td>@(x.dostupna == true ? "Dostupna" : "Zauzeta")</td>
+                        <td>
+                            <a href="/Administrator/Sobe/Uredi?sobaID=@x.sobaID" class="btn btn-outline-primary" style="background-color: #e7e7e7; color: black;">
+                                <i class="fa fa-edit"></i>Uredi
+                            </a>
+                            <a href="/Administrator/Sobe/Obrisi?sobaID=@x.sobaID" class="btn btn-outline-primary" style="background-color: #e7e7e7; color: black;">
+                                <i class="fa" style="color:black">&#xf00d;</i>
+                                Obrisi
+                            </a>
+
+                        </td>
+
+                    </tr>
+            }
+                </tbody>
+
+            </table>
+            <a href="/Administrator/Sobe/Dodaj" class=" btn btn-primary" style="background-color: #e7e7e7; color: black;"><i class="fa fa-plus"></i> Dodaj</a>
+            <a href="/Administrator/Sobe/Cjenovnik" class=" btn btn-primary" style="background-color: #e7e7e7; color: black;"><i class="fa fa-angle-double-right"></i> Idi na cjenovnik</a>
+        </div>
+        <form>
+           
+            <select id="MojInput" onchange="Sobe()" style="width:100%;">
+                <option value="">Prikazi sve sobe:</option>
+
+                <option value="Dostupna">Dostupna</option>
+                <option value="Zauzeta">Zauzeta</option>
+
+
+            </select>
+
+        </form>
+    </div>
+</div>
+
+
+<script>
+    
+        function myFunction() {
+        var input, table, tr, td, txtValue;
+        input = document.getElementById("myInput").value;
+        table = document.getElementById("dataTable");
+        tr = table.getElementsByTagName("tr");
+        for (var i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+        if (td != null) {
+            txtValue = td.textContent || td.innerText;
+        if (txtValue.indexOf(input)>-1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
+        }
+            }
+        }
+    }
+
+        function Sobe() {
+            var input, table, tr, td, txtValue;
+            input = document.getElementById("MojInput").value;
+            table = document.getElementById("dataTable");
+            tr = table.getElementsByTagName("tr");
+            for (var i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[4];
+                if (td != null) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.indexOf(input) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+
+</script>
+

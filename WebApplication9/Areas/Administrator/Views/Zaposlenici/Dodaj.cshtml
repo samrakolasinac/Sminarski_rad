@@ -1,0 +1,121 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApplication9.Areas.Administrator.ViewModels.ZaposleniciDodajVM
+
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+
+}
+<!DOCTYPE html>
+
+<head>
+    <style>
+        .field-validation-error {
+            color: darkred;
+        }
+    </style>
+</head>
+
+   <div class="form-style-6">
+       
+       <form asp-action="Snimi">
+           @if (!ViewData.ModelState.IsValid)
+    {
+       <div asp-validation-summary="All" class="alert alert-danger"></div>
+}
+           <h1><i class="fa fa-user"></i> Novi zaposlenik</h1>
+
+
+
+
+           <div class="form-row">
+               <div class="form-group col-md-6">
+                   <label asp-for="@Model.Ime" class="control-label">Ime</label>
+                   <input asp-for="@Model.Ime" class="form-control" />
+                   <span asp-validation-for="@Model.Ime" class="text-danger"></span>
+
+               </div>
+
+               <div class="form-group col-md-6">
+                   <label asp-for="@Model.Prezime" class="control-label">Prezime</label>
+                   <input asp-for="@Model.Prezime" class="form-control" />
+                   <span asp-validation-for="@Model.Prezime" class="text-danger"></span>
+               </div>
+           </div>
+           <div class="form-row">
+               <div class="form-group col-md-6">
+                   <label asp-for="@Model.JMBG" class="control-label">JMBG</label>
+                   <input asp-for="@Model.JMBG" class="form-control" />
+                   <span asp-validation-for="@Model.JMBG" class="text-danger"></span>
+               </div>
+
+               <div class="form-group col-md-6">
+                   <label asp-for="@Model.BrojTelefona" class="control-label">Broj telefona</label>
+                   <input asp-for="@Model.BrojTelefona" class="form-control" placeholder="_ _ _/_ _ _- _ _ _" />
+                   <span asp-validation-for="@Model.BrojTelefona" class="text-danger"></span>
+               </div>
+
+           </div>
+
+           <div class="form-group">
+               <label asp-for="@Model.DatumRodjenja" class="control-label">Datum rodjenja</label>
+               <input asp-for="@Model.DatumRodjenja" class="form-control" />
+               <span asp-validation-for="@Model.DatumRodjenja" class="text-danger"></span>
+           </div>
+
+           <div class="form-group">
+               <label class="control-label">Datum zaposlenja</label>
+               <input asp-for="@Model.DatumZaposelenja" class="form-control" />
+               <span asp-validation-for="@Model.DatumZaposelenja" class="text-danger"></span>
+           </div>
+           <div class="form-row">
+               <div class="form-group col-md-6">
+                   <label class="control-label">Tekuci racun</label>
+                   <input asp-for="@Model.TekuciRacun" class="form-control" />
+                   <span asp-validation-for="@Model.TekuciRacun" class="text-danger"></span>
+               </div>
+
+               <div class="form-group col-md-6">
+                   <label asp-for="@Model.Email" class="control-label">Email</label>
+                   <input asp-for="@Model.Email" class="form-control" placeholder="Email" />
+                   <span asp-validation-for="@Model.Email" class="text-danger"></span>
+               </div>
+
+           </div>
+
+        
+           <div class="form-row">
+               <div class="form-group col-md-6">
+                   <label asp-for="@Model.KorisnickoIme" class="control-label">Korisnicko ime</label>
+                   <input asp-for="@Model.KorisnickoIme" class="form-control" />
+                   <span asp-validation-for="@Model.KorisnickoIme" class="text-danger"></span>
+               </div>
+
+               <div class="form-group col-md-6">
+                   <label asp-for="@Model.Lozinka" class="control-label">Lozinka</label>
+                   <input asp-for="@Model.Lozinka" class="form-control" />
+                   <span asp-validation-for="@Model.Lozinka" class="text-danger"></span>
+               </div>
+           </div>
+           <div class="form-group">
+               <label asp-for="@Model.TipID">Tip uposlenika</label>
+               <select asp-for="@Model.TipID" asp-items="@Model.tipZaposlenika" class="form-control"></select>
+
+           </div>
+           <div class="form-group">
+               <label asp-for="@Model.GradID">Grad</label>
+               <div class="MojDIV">
+                   <select id="MojID" asp-for="@Model.GradID" asp-items="@Model.gradovi" class="form-control"></select>
+                   <a class="MojDIV" asp-action="Index" asp-area="Administrator" asp-controller="Lokacije">...</a>
+               </div>
+           </div>
+
+           <div class="form-group">
+               <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Sacuvaj</button>
+               <a asp-action="Index" class="btn btn-primary" style="background-color:lightgray;color:black"><i class="fa fa-times"></i> Odustani</a>
+           </div>
+       </form>
+        
+    </div>
+
+

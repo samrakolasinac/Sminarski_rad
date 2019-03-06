@@ -1,0 +1,50 @@
+﻿@model WebApplication9.Areas.Klijent.ViewModels.LokacijeIndexVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+<div style="background-image:url(https://t-ec.bstatic.com/images/hotel/max1024x768/780/78084129.jpg)" >
+<div @*class="card mb-3"*@>
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Drzave
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Akcije</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.drzave)
+                    {
+                        <tr>
+                            <td>@x.Naziv</td>
+
+                            <td>
+                                <a href="/Klijent/Lokacije/PrikaziGradove?drzavaID=@x.DrzavaID" class="btn btn-outline-primary" style="background-color:white; color: black;">
+                                    <i class="fas fa-align-center"></i> Prikazi gradove
+                                </a>
+                             
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+           
+        </div>
+    </div>
+</div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    </div>
+

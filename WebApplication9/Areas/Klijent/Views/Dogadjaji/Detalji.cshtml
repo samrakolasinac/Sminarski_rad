@@ -1,0 +1,23 @@
+﻿@model WebApplication9.Areas.Klijent.ViewModels.DogadjajiDetaljiVM
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Detalji";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table">Detaljan opis</i>
+    </div>
+    <div class="card-body">
+        <input type="hidden" value="@Model.dogadjaj.Id" />
+        <div class="form-group">
+            <div class="form-row">
+                <p>@Model.dogadjaj.Opis</p>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="/Klijent/Dogadjaji/Index" class="btn btn-primary" style="margin-left:40%; background-color:gray"><i class="fa fa-backward"></i> Nazad</a>
+
+

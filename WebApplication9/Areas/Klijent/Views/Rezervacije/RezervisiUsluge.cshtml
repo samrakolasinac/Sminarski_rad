@@ -1,0 +1,54 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApplication9.Areas.Klijent.ViewModels.RezervacijaRezervisiUsluge
+@{
+    ViewData["Title"] = "RezervisiUsluge";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+<head>
+    <style>
+    </style>
+</head>
+
+<div style="background-image:url(https://t-ec.bstatic.com/images/hotel/max1024x768/780/78084129.jpg)">
+
+    <div class="form-style-6" style="margin-left:0%;">
+        <form asp-action="Snimi2">
+            <input type="hidden" asp-for="RezervacijaID" />
+            <fieldset>
+
+                <h1><i class=" fa fa-calendar"></i> Rezervisi dodatne usluge</h1>
+                <label>Dodatne usluge:</label>
+                <select type="text" name="UslugaID" class="form-control">
+                    @foreach (var x in Model.usluge)
+                    {
+                        <option value="@x.Value">@x.Text</option>
+                    }
+                </select>
+
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div id="nekiID"></div>
+            </fieldset>
+            <br />
+            <br />
+            <br />
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Sacuvaj</button>
+
+            <a asp-action="Index" class="btn btn-primary" style="background-color:lightgray;color:black"><i class="fa fa-times"></i> Odustani</a>
+        </form>
+    </div>
+</div>
+
+

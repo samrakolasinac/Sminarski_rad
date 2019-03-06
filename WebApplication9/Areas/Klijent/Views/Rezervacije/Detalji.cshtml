@@ -1,0 +1,157 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApplication9.Areas.Klijent.ViewModels.RezervacijeDetaljiVM
+@{
+    ViewData["Title"] = "Detalji";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+
+<div class="card mb-3">
+    <input type="hidden" value="@Model.RezervacijaID" name="RezervacijaID" readonly />
+
+    <input type="text" name="Gost" value="@Model.Gost" />
+
+
+</div>
+
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Detalji koristenih dodatnih usluga
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Datum</th>
+                        <th>Cijena</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.usluge)
+                    {
+                        <tr>
+                            <td>@x.Usluga</td>
+                            <td>@x.Datum.ToShortDateString()</td>
+                            <td>@x.Cijena</td>
+
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Detalji koristenih soba
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Sprat</th>
+                        <th>Cijena</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.sobe)
+                    {
+                        <tr>
+                            <td>@x.Naziv</td>
+                            <td>@x.Sprat</td>
+                            <td>@x.CijenaSobe</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Detalji posjecenih dogadjaja
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Naziv dogadjaja</th>
+                        <th>Tip</th>
+                        <th>Cijena</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.dogadjaji)
+                    {
+                        <tr>
+                            <td>@x.NazivDogadjaja</td>
+                            <td>@x.TipDogadjaja</td>
+                            <td>@x.CijenaDogadjaja</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Detalji jela
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Cijena</th>
+                        <th>Kolicina</th>
+                        <th>Ukupna cijena</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.jela)
+                    {
+                        <tr>
+                            <td>@x.NazivJela</td>
+                            <td>@x.CijenaJela</td>
+                            <td>@x.KolicinaJela</td>
+                            <td>@x.UkupnaCijenaJela</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div>
+   
+</div>
+
+<a href="/Klijent/Rezervacije/Index" class="btn btn-primary" style="margin-left:40%; background-color:gray"><i class="fa fa-backward"></i>Nazad</a>
+
+

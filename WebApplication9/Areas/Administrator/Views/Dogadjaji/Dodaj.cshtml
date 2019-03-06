@@ -1,0 +1,64 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApplication9.Areas.Administrator.ViewModels.DogadjajiDodajVM
+
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+
+}
+<!DOCTYPE html>
+
+<head>
+    <style>
+    </style>
+</head>
+<header class="panel-heading"></header>
+
+<div class="form-style-6">
+    <form asp-action="Snimi">
+        <input type="hidden" asp-for="dogadjaji.Id" />
+        <fieldset>
+       
+        <h1><i class=" fa fa-calendar"></i> Novi dogadjaj</h1>
+
+             <label>Naziv:</label>
+            <input asp-for="dogadjaji.Naziv" placeholder="Naziv">
+            <span asp-validation-for="dogadjaji.Naziv" class="text-danger"></span>
+            <label>Pocetak:</label>
+            <input asp-for="dogadjaji.Pocetak" class="form-control" placeholder="Pocetak">
+            <label>Kraj:</label>
+            <input asp-for="dogadjaji.Kraj" class="form-control" placeholder="Kraj">
+            <label>Opis:</label>
+            <textarea asp-for="dogadjaji.Opis" placeholder="Opis"></textarea>
+            <span asp-validation-for="dogadjaji.Opis" class="text-danger"></span>
+            <label>Cijena:</label>
+            <input asp-for="dogadjaji.Cijena" placeholder="Cijena">
+            <span asp-validation-for="dogadjaji.Cijena" class="text-danger"></span>
+            <label>Tip dogadjaja: </label>
+            <select asp-for="dogadjaji.TipDogadjajaID" asp-items="@Model.tip"></select>
+            <a id="tipID" class="btn btn-default" >...</a>
+            <div id="nekiID"></div>
+        </fieldset>
+        <br />
+
+
+        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Sacuvaj</button>
+        <a asp-action="Index" class="btn btn-primary" style="background-color:lightgray;color:black"><i class="fa fa-times"></i> Odustani</a>
+
+    </form>
+
+</div>
+<script>
+    $("#tipID").click(function (event) {
+        $.get("/Administrator/Dogadjaji/DodajTipDogadjaj?ID=@Model.dogadjaji.Id",
+            function (rezultat) {
+            $("#nekiID").html(rezultat);
+
+        });
+
+    });
+  
+</script>
+
+
+

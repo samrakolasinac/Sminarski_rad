@@ -1,0 +1,61 @@
+﻿@model WebApplication9.ViewModels.LoginVM
+@{
+   ViewBag.Title= "Prijava";
+}
+
+
+<link href="~/css/style1.css" rel="stylesheet">
+<style>
+    .field-validation-error {
+        color: darkred;
+     
+        
+    }
+</style>
+<div class="body"></div>
+<div class="grad"></div>
+<div class="header">
+    <div>Hotel "Holiday"</div>
+</div>
+<br>
+@if (ViewBag.Status == null || !ViewBag.Status)
+{
+    <form class="login" asp-action="Prijava" method="post">
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+    }
+    <input asp-for="Username" placeholder="Username" autofocus />
+    <br />
+    @Html.ValidationMessageFor(model => model.Username)
+    <input asp-for="Password" placeholder="Password" />
+    <br />
+    @Html.ValidationMessageFor(model => model.Password)
+    <br />
+
+    <button type="submit" class="button">Prijavi se </button>
+    <p class="message">Niste registrovani? <a href="/Autentifikacija/Registracija">Registruj se</a></p>
+</form>
+}
+else
+{
+   
+    <form class="login" method="post">
+        <div>@ViewBag.Message</div>
+        <div>
+            <img src="@ViewBag.BarcodeImageUrl" />
+        </div>
+        <div>
+            Manual Setup Code: @ViewBag.SetupCode
+        </div>
+
+        <input type="text" name="passcode" />
+
+        <input type="submit" class="btn btn-success" />
+    </form>
+   
+
+}
+
+

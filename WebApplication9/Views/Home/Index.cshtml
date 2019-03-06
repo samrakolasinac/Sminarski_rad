@@ -1,0 +1,166 @@
+﻿
+@using Microsoft.AspNetCore.Http;
+@using Hotel.Data.Models;
+@using Hotel.Data.EF;
+@using WebApplication9.Helper;
+
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+
+
+    KorisnickiNalog korisnik = Context.GetLogiraniKorisnik();
+
+}
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+
+}
+@if (korisnik.IsAdministrator)
+{
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/Administrator" class="breadcrumb-item" style="color:cadetblue;font-size:x-large;text-decoration:none">Modul administratora</a>
+        </li>
+    </ol>
+    <hr />
+    <h2>Izbornik</h2>
+    <hr />
+    <div class="panel">
+        <div class="panel-body">
+            <div class="row">
+                <a class=" col-xl-3 col-sm-6 mb-3 " style="text-decoration:none" href="/Administrator/Zaposlenici/Index">
+                    <div class="card text-white bg-info o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fa fa-fw fa-users"></i>
+                            </div>
+                            <div class="mr-5"><h3>Zaposlenici</h3></div>
+                        </div>
+                    </div>
+                </a>
+                <a class="col-xl-3 col-sm-6 mb-3" style="text-decoration:none" href="/Administrator/Sobe/Index">
+                    <div class="card text-white bg-info o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fa fa-fw fa-bed"></i>
+                            </div>
+                            <div class="mr-5"><h3>Sobe</h3></div>
+                        </div>
+                    </div>
+                </a>
+                <a class="col-xl-3 col-sm-6 mb-3" href="/Administrator/DodatneUsluge/Index" style="text-decoration:none">
+                    <div class="card text-white bg-info o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fa fa-fw fa-spa"></i>
+                            </div>
+                            <div class="mr-5"><h3>Dodatne usluge</h3></div>
+                        </div>
+                    </div>
+                </a>
+                <a class="col-xl-3 col-sm-6 mb-3" href="/Administrator/Jelo/Index" style="text-decoration:none">
+                    <div class="card text-white bg-info o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fa fa-fw fa-spoon"></i>
+                            </div>
+                            <div class="mr-5"><h3>Jela</h3></div>
+                        </div>
+                    </div>
+                </a>
+                <a class="col-xl-3 col-sm-6 mb-3" href="/Administrator/Lokacije/Index" style="text-decoration:none">
+                    <div class="card text-white bg-info o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fa fa-fw fa-city"></i>
+                            </div>
+                            <div class="mr-5"><h3>Lokacije</h3></div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <hr />
+}
+
+@if (korisnik.IsKlijent)
+{
+
+    <div style="background-image:url(https://t-ec.bstatic.com/images/hotel/max1024x768/780/78084129.jpg)">
+        <hr />
+        <h2>Izbornik</h2>
+        <hr />
+        <div class="panel">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="panel-body">
+                <div class="row">
+                   
+
+                    <a class="col-xl-3 col-sm-6 mb-3" href="/Klijent/Home/ONama" style="text-decoration:none">
+                        <div class="card text-white bg-info o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fa fa-fw fa-city"></i>
+                                </div>
+                                <div class="mr-5"><h3>O nama</h3></div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="col-xl-3 col-sm-6 mb-3" href="/Klijent/Home/Galerija" style="text-decoration:none">
+                        <div class="card text-white bg-info o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fa fa-fw fa-city"></i>
+                                </div>
+                                <div class="mr-5"><h3>Galerija</h3></div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class=" col-xl-3 col-sm-6 mb-3 " style="text-decoration:none" href="/Klijent/Lokacije/Index">
+                        <div class="card text-white bg-info o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fa fa-fw fa-calendar-alt"></i>
+                                </div>
+                                <div class="mr-5"><h3>Lokacije</h3></div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="col-xl-3 col-sm-6 mb-3" href="/Klijent/Rezervacije/Index" style="text-decoration:none">
+                        <div class="card text-white bg-info o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fa fa-fw fa-city"></i>
+                                </div>
+                                <div class="mr-5"><h3>Rezervacije</h3></div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        </div>
+        }

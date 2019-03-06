@@ -1,0 +1,59 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApplication9.Areas.Administrator.ViewModels.SobeTipSobeDodajVM
+
+@{
+    ViewData["Title"] = "DodajTipSobe";
+    //Layout = "~/Views/Shared/Layout1.cshtml";
+
+}
+<!DOCTYPE html>
+<head>
+    <link href="~/css/FormCSS.css" rel="stylesheet" />
+</head>
+
+
+<div class="form-style-5">
+
+    <header class="panel-heading">
+        <h3>Novi tip sobe</h3>
+
+    </header>
+    <form id="formaID">
+        <input  type="hidden" value="@Model.sobaID" name="sobaID"/>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+
+            <label asp-for="TipSobe.Naziv" class="control-label">Naziv</label>
+            <input asp-for="TipSobe.Naziv" class="form-control" />
+            <span asp-validation-for="TipSobe.Naziv" class="text-danger"></span>
+        </div>
+
+
+
+        <div class="form-group">
+            <input id="buttonID" type="submit" value="Snimi" class="btn btn-primary" />
+        </div>
+    </form>
+
+</div>
+
+<script>
+    $("#buttonID").click(function () {
+        var forma = $("#formaID");
+        $.ajax({
+            type: "POST",
+            url: "/Administrator/Sobe/SnimiTip",
+            data: forma.serialize(),
+            success: function (rezultat) {
+                $("#nekiID").html(rezultat);
+
+            }
+
+        });
+
+    });
+</script>
+
+
+
+

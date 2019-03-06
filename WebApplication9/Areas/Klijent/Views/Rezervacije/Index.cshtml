@@ -1,0 +1,90 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApplication9.Areas.Klijent.ViewModels.RezervacijeIndexVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+<input type="hidden" name="GostID" value="@Model.GostID" />
+
+@*<div style="background-image:url(https://t-ec.bstatic.com/images/hotel/max1024x768/780/78084129.jpg)">*@
+<div @*class="card mb-3" *@>
+  
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Vase rezervacije
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                
+                <thead>
+                    <tr>
+                        <th>Datum rezervacije</th>
+                        <th>Gost</th>
+                        <th>Zaposlenik</th>
+                        <th>Aktivna</th>
+                        <th>Akcija</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.rows)
+                    {
+                        <tr>
+                            <td>@x.DatumRezervacije.ToShortDateString()</td>
+                            <td>@x.Gost</td>
+                            <td>@x.Zaposlenik</td>
+                            <td>@(x.Aktivna ? "Aktivna" : "Neaktivna")</td>
+                            <td>
+                                <a href="/Klijent/Rezervacije/Detalji?RezervacijaID=@x.RezervacijaID" class="btn btn-outline-primary"
+                                   style="background-color: #e7e7e7; color: black;">
+                                    <i class="fa fa-info"></i>
+                                    Detalji rezervacije
+                                </a> <space></space><space></space>
+                                @if (x.Aktivna == true)
+                                {
+                                    <a href="/Klijent/Rezervacije/Otkazi?RezervacijaID=@x.RezervacijaID" class="btn btn-outline-primary"
+                                       style="background-color: #e7e7e7; color: black;">
+                                        <i class="fas fa-ban"></i>
+                                        Otkazi
+                                    </a> <space></space><space></space>
+                                }
+                                @if (x.Aktivna == true)
+                                {
+                                    <a href="/Klijent/Rezervacije/RezervisiUsluge?RezervacijaID=@x.RezervacijaID" class="btn btn-outline-primary"
+                                       style="background-color: #e7e7e7; color: black;">
+                                        <i class="fas fa-concierge-bell"></i>
+                                        Rezervisi usluge
+                                    </a> <space></space><space></space>
+                                }
+                                @if (x.Aktivna == true)
+                                {
+                                    <a href="/Klijent/Rezervacije/RezervisiJelo?RezervacijaID=@x.RezervacijaID" class="btn btn-outline-primary"
+                                       style="background-color: #e7e7e7; color: black;">
+                                        <i class="fas fa-utensil-spoon"></i>
+                                        Rezervisi jelo
+                                    </a> <space></space><space></space>
+                                }
+                                @if (x.Aktivna == true)
+                                {
+                                    <a href="/Klijent/Rezervacije/RezervisiDogadjaje?RezervacijaID=@x.RezervacijaID" class="btn btn-outline-primary"
+                                       style="background-color: #e7e7e7; color: black;">
+                                        <i class="fas fa-calendar"></i>
+                                        Rezervisi dogadjaj
+                                    </a> <space></space><space></space>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+<a href="/Klijent/Rezervacije/Dodaj" class=" btn btn-primary" style="background-color: #e7e7e7; color: black;"><i class="fa fa-plus"></i>Nova rezervacija</a>
+<br />
+@*</div>*@
